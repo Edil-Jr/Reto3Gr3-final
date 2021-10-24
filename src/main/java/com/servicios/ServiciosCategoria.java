@@ -41,7 +41,7 @@ public class ServiciosCategoria {
             }
         }
     }
-/*
+
     public Categoria update(Categoria categoria){
         if(categoria.getId()!=null){
             Optional<Categoria>g=metodosCrud.getCategoria(categoria.getId());
@@ -64,5 +64,5 @@ public class ServiciosCategoria {
         }).orElse(false);
         return d;
     }
-    */
+    
 }

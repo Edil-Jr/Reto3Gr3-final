@@ -49,7 +49,7 @@ public class ControladorCategoria {
     public Categoria save(@RequestBody Categoria categoria) {
         return servicio.save(categoria);
     }
-  /*  @PutMapping("/update")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Categoria update(@RequestBody Categoria categoria) {
         return servicio.update(categoria);
@@ -60,6 +60,6 @@ public class ControladorCategoria {
     public boolean delete(@PathVariable("id") int categoriaId) {
         return servicio.deletecategoria(categoriaId);
     }
-    */
+    
 }
 

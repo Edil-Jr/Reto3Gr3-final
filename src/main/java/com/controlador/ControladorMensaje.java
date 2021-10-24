@@ -48,7 +48,7 @@ public class ControladorMensaje {
     public Mensaje save(@RequestBody Mensaje message) {
         return servico.save(message);
     }
-    /*
+    
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Mensaje update(@RequestBody Mensaje message) {
@@ -60,5 +60,5 @@ public class ControladorMensaje {
     public boolean delete(@PathVariable("id") int messageId) {
         return servico.deleteMessage(messageId);
     }
-    */
+    
 }

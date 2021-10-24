@@ -40,7 +40,7 @@ public class ServiciosReservacion {
             }
         }
     }
-/*
+
     public Reservacion update(Reservacion reservation){
         if(reservation.getIdReservation()!=null){
             Optional<Reservacion> e= metodosCrud.getReservacion(reservation.getIdReservation());
@@ -72,5 +72,5 @@ public class ServiciosReservacion {
         }).orElse(false);
         return aBoolean;
     }
-*/
+
 }

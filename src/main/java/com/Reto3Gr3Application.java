@@ -1,4 +1,6 @@
-package com.Reto3USA.Reto3Gr3;
+package com;
+
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -11,9 +13,9 @@ import org.springframework.context.annotation.Configuration;
 
 //@Configuration
 //@EnableAutoConfiguration
-@ComponentScan (basePackages = {"com"})
+//@ComponentScan (basePackages = {"c"})
 @EntityScan(basePackages = {"com.modelo"})
-@EnableConfigurationProperties
+//@EnableConfigurationProperties
 @SpringBootApplication
 
 

@@ -49,7 +49,7 @@ public class ControladorCliente {
     public Cliente save(@RequestBody Cliente client) {
         return servicio.save(client);
     }
-    /*
+    
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente update(@RequestBody Cliente client) {
@@ -61,5 +61,5 @@ public class ControladorCliente {
     public boolean delete(@PathVariable("id") int clientId) {
         return servicio.deleteClient(clientId);
     }
-*/
+
 }

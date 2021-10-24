@@ -40,7 +40,7 @@ public class ServiciosMensaje {
             }
         }
     }
-/*
+
     public Mensaje update(Mensaje message){
         if(message.getIdMessage()!=null){
             Optional<Mensaje> env= metodosCrud.getMensaje(message.getIdMessage());
@@ -65,5 +65,5 @@ public class ServiciosMensaje {
         }).orElse(false);
         return aBoolean;
     }
-*/
+
 }

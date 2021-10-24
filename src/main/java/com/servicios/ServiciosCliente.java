@@ -40,7 +40,7 @@ public class ServiciosCliente {
             }
         }
     }
-/*
+
     public Cliente update(Cliente client){
         if(client.getIdClient()!=null){
             Optional<Cliente> e= metodosCrud.getCliente(client.getIdClient());
@@ -71,5 +71,5 @@ public class ServiciosCliente {
         }).orElse(false);
         return aBoolean;
     }
-*/
+
 }
