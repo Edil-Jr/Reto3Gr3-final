@@ -5,6 +5,7 @@
 package com.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,24 +27,22 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Mensaje {
+public class Mensaje implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
+   
     @Column (nullable = false, length = 45)
     private String messageText;
     
-    @ManyToOne
+     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties({"messages", "cabin"})
-    private Cabin cabin;
-
+    @JsonIgnoreProperties({"messages", "client","reservations" })
+     private Cabin cabin;
+    
     @ManyToOne
     @JoinColumn(name="clientId")
-    @JsonIgnoreProperties({"messages", "client"})
-    private Cliente client;
-
-    
-    
-    
+    @JsonIgnoreProperties({"messages", "reservations","client"})
+     private Cliente client;
+     
 }

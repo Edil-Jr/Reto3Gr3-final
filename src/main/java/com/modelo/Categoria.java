@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
  * @author adminjunior
  */    
 @Entity
-@Table(name = "category")
+@Table(name = "Category")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

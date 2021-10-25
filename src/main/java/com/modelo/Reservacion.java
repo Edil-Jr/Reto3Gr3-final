@@ -21,10 +21,10 @@ import lombok.NoArgsConstructor;
 
 /**
  *
- * @author adminjunior
+ * @author Edilberto Holguin Urrego
  */
 @Entity
-@Table(name = "reservations")
+@Table(name = "Reservation")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

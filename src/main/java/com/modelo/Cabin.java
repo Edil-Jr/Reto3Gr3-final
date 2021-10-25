@@ -35,7 +35,7 @@ import lombok.NoArgsConstructor;
 * @Data es una anotacion para hacer get an set automaticos
 */
 @Entity
-@Table(name = "cabin")
+@Table(name = "Cabins")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,34 +48,39 @@ public class Cabin implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     /*
-    *Se crean los atributos de las tablas o campos name 
+    *Se crean los atributos de las tablas o campos 
     */
-    @Column (nullable = false, length = 45)
-    private String name;
-    /*
-    *Creamos el campo marca
-    */
-    @Column (nullable = false, length = 45)
+    
+    @Column (nullable = false, length = 45) 
     private String brand;
     /*
-    * Se crea el campo descripcion
-    **/
-    @Column (nullable = false, length = 245)
-    private String descripcion;
-    /*
-    * Campo cantidad de habitaciones de tipo entero
+    * Campo cantidad de habitaciones
     **/
     private Integer rooms;
+        
+    @Column (nullable = false, length = 45)
+    private String name;
+    
+    
+    
+     /*
+    * Se crea el campo descripcion
+    **/
+
+  
+    @Column (nullable = false, length = 245)
+    private String description;
+   
     
     /*
     * Se revisa las relaciones de la tablas y se crean
     * de Muchos a uno y de uno a muchos segun sea el caso
     **/
-    
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("cabin")
      private Categoria categoryId;
+  
     
       /*
     * Se revisa las relaciones de la tablas y se crean
@@ -88,19 +93,18 @@ public class Cabin implements Serializable{
     private List<Mensaje> messages;
    
       /*
-    * Se revisa la persistencia  actualizacion de la tabla
+    * Se revisa la persistencia de  actualizacion de la tabla
     * si toma algun cambio
     **/
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
     @JsonIgnoreProperties({"cabin", "reservations"})
     /*
-    *  se debe declarar los atributos con el objeto de la tabla
-    * 
+    *  se debe declarar los atributos con el objeto de la tabla que vamos
+    * a trabajar en este caso el objeto Reservation
     **/
     private List<Reservacion> reservations;  
 
   
-    
     
 }

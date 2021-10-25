@@ -41,7 +41,7 @@ import org.springframework.stereotype.Service;
 	        }
 	    }
             
-            /*
+            
             public Cabin update(Cabin cabin){
 	        if(cabin.getId()!=null){
 	            Optional<Cabin> resp=metodosCrud.getCabin(cabin.getId());
@@ -61,10 +61,7 @@ import org.springframework.stereotype.Service;
                        resp.get().setName(cabin.getName());
                     }
                     
-                    if(cabin.getCategory()!=null){
-                        resp.get().getCategory();
-                    }
-                   
+                                 
                   
                     metodosCrud.save(resp.get());
                     return resp.get();
@@ -76,6 +73,6 @@ import org.springframework.stereotype.Service;
         }
     }
             
-       */     
+           
 
 }
