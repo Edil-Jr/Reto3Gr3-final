@@ -35,7 +35,7 @@ import lombok.NoArgsConstructor;
 * @Data es una anotacion para hacer get an set automaticos
 */
 @Entity
-@Table(name = "Cabins")
+@Table(name = "cabin")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -78,7 +78,7 @@ public class Cabin implements Serializable{
     **/
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("cabin")
+    @JsonIgnoreProperties("cabins")
      private Categoria categoryId;
   
     
@@ -88,7 +88,7 @@ public class Cabin implements Serializable{
     **/
     
   
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabins")
     @JsonIgnoreProperties({"cabin", "message"})
     private List<Mensaje> messages;
    
@@ -97,7 +97,7 @@ public class Cabin implements Serializable{
     * si toma algun cambio
     **/
     
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabins")
     @JsonIgnoreProperties({"cabin", "reservations"})
     /*
     *  se debe declarar los atributos con el objeto de la tabla que vamos

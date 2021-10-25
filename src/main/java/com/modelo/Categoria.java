@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
  * @author adminjunior
  */    
 @Entity
-@Table(name = "Category")
+@Table(name = "category")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,7 +40,7 @@ public class Categoria implements Serializable {
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="categoryId")
     @JsonIgnoreProperties("category")
-    private List<Cabin> cabin;
+    private List<Cabin> cabins;
 
   
     

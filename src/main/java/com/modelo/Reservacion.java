@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
  * @author Edilberto Holguin Urrego
  */
 @Entity
-@Table(name = "Reservation")
+@Table(name = "reservation")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,8 +40,8 @@ public class Reservacion implements Serializable  {
     
     @ManyToOne
     @JoinColumn(name = "cabin_id")
-    @JsonIgnoreProperties({"reservations","cabin"})
-    private Cabin cabin;
+    @JsonIgnoreProperties({"reservations","cabins"})
+    private Cabin cabins;
 
     @ManyToOne
     @JoinColumn(name = "Client_id")

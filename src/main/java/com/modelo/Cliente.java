@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
  */
 
 @Entity
-@Table(name = "client")
+@Table(name = "Client")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
