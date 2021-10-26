@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
  */
 
 @Entity
-@Table(name = "Client")
+@Table(name = "client")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,7 +48,7 @@ public class Cliente implements Serializable {
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
     @JsonIgnoreProperties("client")
-    public List<Reservacion>reservations;
+    public List<Reservacion> reservations;
 
     
     

@@ -33,21 +33,20 @@ public class Reservacion implements Serializable  {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
-       @Column (nullable = false, length = 45) 
+    @Column (nullable = false, length = 45) 
     private Date startDate;
     private Date devolutionDate;
     private String status="created";
     
     @ManyToOne
     @JoinColumn(name = "cabin_id")
-    @JsonIgnoreProperties({"reservations","cabins"})
+    @JsonIgnoreProperties("reservations")
     private Cabin cabin;
 
     @ManyToOne
     @JoinColumn(name = "Client_id")
-    @JsonIgnoreProperties({"reservations","client"})
+    @JsonIgnoreProperties({"reservations","messages"})
     private Cliente client;
-
-  
     
+    private String score;
 }

@@ -82,7 +82,7 @@ public class Cabin implements Serializable{
     
   
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
-    @JsonIgnoreProperties({"cabin", "message"})
+    @JsonIgnoreProperties({"cabin", "client"})
     private List<Mensaje> messages;
    
       /*
