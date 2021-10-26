@@ -79,8 +79,6 @@ public class Cabin implements Serializable{
     * Se revisa las relaciones de la tablas y se crean
     * de Muchos a uno y de uno a muchos segun sea el caso
     **/
-    
-  
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
     @JsonIgnoreProperties({"cabin", "client"})
     private List<Mensaje> messages;

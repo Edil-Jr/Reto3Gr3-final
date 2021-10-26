@@ -40,7 +40,7 @@ public class Cliente implements Serializable {
     private String password;
      private String name;
     @Column (nullable = false, length = 45)
-    private String age;
+    private Integer age;
    
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
     @JsonIgnoreProperties("client")
@@ -50,6 +50,4 @@ public class Cliente implements Serializable {
     @JsonIgnoreProperties("client")
     public List<Reservacion> reservations;
 
-    
-    
 }
