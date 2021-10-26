@@ -50,6 +50,8 @@ public class Cabin implements Serializable{
     /*
     *Se crean los atributos de las tablas o campos 
     */
+    @Column (nullable = false, length = 45)
+    private String name;
     
     @Column (nullable = false, length = 45) 
     private String brand;
@@ -57,17 +59,10 @@ public class Cabin implements Serializable{
     * Campo cantidad de habitaciones
     **/
     private Integer rooms;
-        
-    @Column (nullable = false, length = 45)
-    private String name;
-    
-    
-    
      /*
     * Se crea el campo descripcion
     **/
 
-  
     @Column (nullable = false, length = 245)
     private String description;
    
@@ -78,8 +73,8 @@ public class Cabin implements Serializable{
     **/
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("cabins")
-     private Categoria categoryId;
+    @JsonIgnoreProperties("cabin")
+     private Categoria category;
   
     
       /*
@@ -88,7 +83,7 @@ public class Cabin implements Serializable{
     **/
     
   
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabins")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
     @JsonIgnoreProperties({"cabin", "message"})
     private List<Mensaje> messages;
    
@@ -97,7 +92,7 @@ public class Cabin implements Serializable{
     * si toma algun cambio
     **/
     
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabins")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "cabin")
     @JsonIgnoreProperties({"cabin", "reservations"})
     /*
     *  se debe declarar los atributos con el objeto de la tabla que vamos

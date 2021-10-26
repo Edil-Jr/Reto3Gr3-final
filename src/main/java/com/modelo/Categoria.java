@@ -38,7 +38,7 @@ public class Categoria implements Serializable {
     @Column (nullable = false, length = 250)
     private String description;
     
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="categoryId")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="category")
     @JsonIgnoreProperties("category")
     private List<Cabin> cabins;
 
