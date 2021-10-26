@@ -65,15 +65,13 @@ public class Cabin implements Serializable{
 
     @Column (nullable = false, length = 245)
     private String description;
-   
-    
     /*
     * Se revisa las relaciones de la tablas y se crean
     * de Muchos a uno y de uno a muchos segun sea el caso
     **/
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("cabin")
+    @JsonIgnoreProperties("cabins")
      private Categoria category;
   
     
