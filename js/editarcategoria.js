@@ -5,15 +5,19 @@
 function editarRegistro(llaveRegistro) {
     //crea un objeto javascript
     let datos = {
-        id: llaveRegistro
+        id: llaveRegistro,
+        /* name:$("#Cname").val(),
+        description:$("#Cdescription").val() */
     }
+    console.log(datos)
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
 
+
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "https://g2c7d8c8e491995-db202109201320.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/costume/costume/" + llaveRegistro,
+        url: "http://localhost:8080/api/Category/all",
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -30,14 +34,17 @@ function editarRegistro(llaveRegistro) {
 
         // código a ejecutar si la petición es satisfactoria;
         // la respuesta es pasada como argumento a la función
-        success: function (respuesta) {
+        success: function ( respuesta) {
             //escribe en la consola del desarrollador para efectos de depuración
+            /* console.log("Respuesta del get: " +respuesta[0].id) */
             console.log(respuesta);
             $("#mensajes").show(1000);
             $("#mensajes").html("Información recuperada...");
             $("#mensajes").hide(1000);
-            editarRespuesta(respuesta.items);
             activaEditar();
+            editarRespuesta(respuesta);
+          
+            
         },
 
         // código a ejecutar si la petición falla;
@@ -49,6 +56,9 @@ function editarRegistro(llaveRegistro) {
             //$("#mensajes").hide(1000);
         }
     });
+    var llave = llaveRegistro
+    console.log("Estos e suna llave " + llave)
+    return llaveRegistro;
 }
 
 /* 
@@ -59,6 +69,7 @@ function editarRegistro(llaveRegistro) {
     
 */
 function editarRespuesta(items) {
+    /* console.log("Items: "+items[0]) */
     $("#idEdit").val(items[0].id);
     $("#nameEdit").val(items[0].name);
     $("#brandEdit").val(items[0].brand);
@@ -68,24 +79,23 @@ function editarRespuesta(items) {
 
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
 //petición al ws de tipo PUT
-function actualizar() {
-
+function actualizar(llave) {
+console.log(llave)
     //crea un objeto javascript
     let datos = {
         id: $("#idEdit").val(),
-        brand: $("#brandEdit").val(),
-        model: $("#modelEdit").val(),
-        category_id: $("#categoryEdit").val(),
-        name: $("#nameEdit").val()
+        name: $("#nameEdit").val(),
+        description: $("#descripcionEdit").val(),
     }
-
+    console.log("Se ejecuto actualizar")
+    console.log(datos.id)
+    console.log(datos)
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
 
-    if (validarEditar()) {
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "https://g2c7d8c8e491995-db202109201320.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/costume/costume",
+            url: "http://localhost:8080/api/Category/update",
 
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
@@ -104,7 +114,8 @@ function actualizar() {
             // la respuesta es pasada como argumento a la función
             success: function (respuesta) {
                 //escribe en la consola del desarrollador para efectos de depuración
-                console.log(respuesta);
+                console.log("Respuesta del update:");
+                console.log(respuesta)
                 $("#mensajes").show(1000);
                 $("#mensajes").html("Registro actualizado...");
                 $("#mensajes").hide(1000);
@@ -121,17 +132,19 @@ function actualizar() {
                 //$("#mensajes").hide(1000);
             }
         });
-    }
+    
 }
 
 /**
  * Configura el aspecto de la página para actualizar el registro
  */
 function activaEditar() {
-    $("#idEdit").hide();
-    $("#editar").show(500);
+    console.log("Se ejecuto la funcion activaEditar")
+    $("#idEdit").show();
+    $("#editar").show();
     $("#idEdit").focus();
     $("#nuevo").hide();
     $("#nuevoRegistro").hide(500)
     $("#listado").hide(500);
+    
 }

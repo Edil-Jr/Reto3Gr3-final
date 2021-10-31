@@ -11,10 +11,10 @@ function registrar() {
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
 
-    if (validar()){
+  
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "http://localhost/api/Category/save",
+            url: "http://localhost:8080/api/Category/save",
             
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
@@ -51,7 +51,7 @@ function registrar() {
             }
         });
     }
-}
+
 
 /**
  * Configura el aspecto de la página para ingresar un nuevo registro

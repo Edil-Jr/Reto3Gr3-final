@@ -16,12 +16,14 @@
     <script src="js/listarmensajes.js"></script>
     <script src="js/registrarmensajes.js"></script>
     <script src="js/funcionesmensajes.js"></script>
+    <script src="js/borrarmensajes.js"></script>
+    <script src="js/editarmensajes.js"></script>
 </head>
 
 <body>
-        <a href="index.html"><img src="img/back.png" alt="Regresar"></a>
+    <a href="index.html"><img src="img/previous.png" alt="Regresar" id="back"></a>
         <div class="container" id="principal">
-        <h1>Mensajes Disponibles</h1>
+        <h2>Mensajes Disponibles</h2>
 
         <!-- en el elemento identificado con el id 'mensajes' se mostraran los mensajes
              o resultado de ejecutar la peticion
@@ -36,7 +38,7 @@
 
         <!-- Seccion para nuevos registros-->
         <div id="nuevo">
-            <h3>Registrar Mensaje</h3>
+            <h4>Registrar Mensaje</h4>
             
             <div class="mb-3" id="formulario">
                 
@@ -44,7 +46,7 @@
                     
                     </select>
                  
-                    <select id="cabin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Disfraz">
+                    <select id="cabin" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Cabaña">
                         
                     </select>
                   
@@ -59,17 +61,18 @@
         </div>
 
 
-        <!-- Seccion para editar registros-->
-        <div id="editar">
-            <h3>Editar Mensaje</h3>
-            <input type="number" id="idEdit" placeholder="id">
-            <br>
-            <textarea id="messagetextEdit" placeholder="messagetext" rows="4" cols="50"></textarea>
-            <br>
-            <button onclick="actualizar();">Guardar</button>
-            <button onclick="estadoInicial();">Cancelar</button>
-        </div>
         
+        
+    </div>
+    <!-- Seccion para editar registros-->
+    <div id="editar" class="formulario">
+        <h4>Editar Mensaje</h4>
+        <input type="number" id="idEdit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="id">
+        <br>
+        <textarea id="messagetextEdit" class="form-control" aria-label="With textarea" placeholder="Write a message" placeholder="messagetext" rows="4" cols="50"></textarea>
+        <br>
+        <button onclick="actualizar();" class="btn btn-primary btn-sm">Guardar</button>
+        <button onclick="estadoInicial();" class="btn btn-dark btn-sm">Cancelar</button>
     </div>
 </body>
 

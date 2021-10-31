@@ -13,7 +13,7 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Category/all",
+        url: "http://localhost:8080/api/Category/all",
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -67,19 +67,21 @@ function listarRespuesta(items) {
     var tabla = `<table class="table">
             <thead class="thead-dark">
                   <tr>
+                    <th scope="col">#</th>
                     <th scope="col">Categoría</th>
                     <th scope="col">Descripción</th>
-                    <th colspan="2" scope="col">Acciones</th>
+                    <th  id="id-boton"colspan="2" scope="col">Acciones</th>
                   </tr>
                   </thead>`;
 
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i = 0; i < items.length; i++) {
         tabla += `<tr>
+        <th scope="row">${i}</th>
                   <td>${items[i].name}</td>
                   <td>${items[i].description}</td>
-                   <td><button class="btn btn-primary btn-sm" onclick="editarcategoria()">Editar</onclick=></td>
-                   <td><button type="button" class="btn btn-dark btn-sm" onclick="borrarcateogria()">Borrar</button></td>
+                   <td id="id-boton"><button id="boton-primary" class="btn btn-primary btn-sm" onclick="editarRegistro(${items[i].id})">Editar</onclick=></td>
+                   <td id="id-boton"><button type="button" class="btn btn-dark btn-sm" onclick="borrarRegistro(${items[i].id})">Borrar</button></td>
                    </tr>`;
     }
 

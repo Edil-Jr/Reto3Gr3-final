@@ -1,66 +1,63 @@
-//Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
-//petición al ws de tipo POST
-function registrar() {
-
+/**
+ * Invoca peticion WS GET con parametro (id) para recuperar información del registro
+ * y pintar información en el formulario de edición
+ */
+function editarRegistro(llaveRegistro) {
     //crea un objeto javascript
-    let datos={
-        messageText: $("#messagetext").val(),
-        client:{"idClient":$("#client").val()},
-        cabin:{"id":$("#cabin").val()}
+    let datos = {
+        id: llaveRegistro
     }
-    
+    console.log("sakjdhasd")
+    console.log(datos.id)
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
-    console.log(datosPeticion)
-    
-        $.ajax({
-            // la URL para la petición (url: "url al recurso o endpoint")
-            url: "http://localhost:8080/api/Message/save",
-            
-            // la información a enviar
-            // (también es posible utilizar una cadena de datos)
-            //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
-            data : datosPeticion,
-    
-            // especifica el tipo de petición http: POST, GET, PUT, DELETE
-            type: 'POST',
-    
-            contentType:"application/JSON",
-    
-            // el tipo de información que se espera de respuesta
-            //dataType: 'json',
-    
-            // código a ejecutar si la petición es satisfactoria;
-            // la respuesta es pasada como argumento a la función
-            success: function (respuesta) {
-                //escribe en la consola del desarrollador para efectos de depuración
-                console.log(respuesta);
-                $("#mensajes").show(1000);
-                $("#mensajes").html("Registro ingresado...");
-                $("#mensajes").hide(1000);
-                listar();
-                estadoInicial();
-            },
-    
-            // código a ejecutar si la petición falla;
-            // son pasados como argumentos a la función
-            // el objeto de la petición en crudo y código de estatus de la petición
-            error: function (xhr, status) {
-                $("#mensajes").show(1000);
-                $("#mensajes").html("Error peticion POST..." + status );
-                //$("#mensajes").hide(1000);
-            }
-        });
-    }
 
+    $.ajax({
+        // la URL para la petición (url: "url al recurso o endpoint")
+        url: "http://localhost:8080/api/Reservation/all",
 
-/**
- * Configura el aspecto de la página para ingresar un nuevo registro
- */
-function activaNuevo(){
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
+        //data: datosPeticion,
+
+        // especifica el tipo de petición http: POST, GET, PUT, DELETE
+        type: 'GET',
+
+        contentType: "application/JSON",
+
+        // el tipo de información que se espera de respuesta
+        dataType: 'json',
+
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function (respuesta) {
+            //escribe en la consola del desarrollador para efectos de depuración
+            console.log(respuesta);
+            $("#mensajes").show(1000);
+            $("#mensajes").html("Información recuperada...");
+            $("#mensajes").hide(1000);
+            editarRespuesta(respuesta, llaveRegistro);
+            activaEditar();
+            armaListaCabañas(respuesta);
+            armaListaClientes(respuesta);
+        },
+
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function (xhr, status) {
+            $("#mensajes").show(1000);
+            $("#mensajes").html("Error peticion PUT..." + status);
+            //$("#mensajes").hide(1000);
+        }
+    });
+}
+
+function activaEditar(){
     $("#nuevo").show(500);
-    $("#client").focus();
+    $("#startDate").focus();
     $("#editar").hide();
     $("#nuevoRegistro").hide(500)
     $("#listado").hide(500);
@@ -126,6 +123,21 @@ function listarClientes() {
     });
 }
 
+function editarRespuesta(items, llaveRegistro) {
+   /*  console.log("Se ejcuto editarRespuesta...")
+    console.log(llaveRegistro)
+    console.log(items[0].startDate)
+    //$("#idEdit").val(items[0].id); */
+    /* items[llaveRegistro].devolutionDate).substr(0,10)
+    items[llaveRegistro].startDate).substr(0, 10)
+    items[llaveRegistro].client.name
+    items[llaveRegistro].cabin.name */
+    $("#startDate").val();
+    $("#devolutionDate").val();
+    $("#client").val("Editar cliente"); 
+    $("#cabin").val("Editar cabaña");
+     
+}
 
 function armaListaCabañas(items) {
     $("#listado").html("");
@@ -179,7 +191,7 @@ function listarCabañas() {
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de bicis...");
+            $("#mensajes").html("Obteniendo listado de cabañas...");
             $("#mensajes").hide(1000);
         }
     });

@@ -13,7 +13,7 @@ function editarRegistro(llaveRegistro) {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Message/update" + llaveRegistro,
+        url: "http://localhost:8080/api/Message/all",
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -36,7 +36,7 @@ function editarRegistro(llaveRegistro) {
             $("#mensajes").show(1000);
             $("#mensajes").html("Información recuperada...");
             $("#mensajes").hide(1000);
-            editarRespuesta(respuesta.items);
+            editarRespuesta(respuesta);
             activaEditar();
         },
 
@@ -59,8 +59,8 @@ function editarRegistro(llaveRegistro) {
     
 */
 function editarRespuesta(items) {
-    $("#idEdit").val(items[0].id);
-    $("#messagetextEdit").val(items[0].messagetext);
+    $("#idMessage").val(items[0].idMessage);
+    $("#messagetextEdit").val(items[0].messageText);
 }
 
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
@@ -69,17 +69,17 @@ function actualizar() {
 
     //crea un objeto javascript
     let datos = {
-        id: $("#idEdit").val(),
-        messagetext: $("#messagetextEdit").val()
+        idMessage: $("#idMessage").val(),
+        messageText: $("#messagetextEdit").val()
     }
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
+    console.log("Este es el jsno: " +datosPeticion)
 
-    if (validarEditar()) {
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "https://g2c7d8c8e491995-db202109201320.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
+            url: "http://localhost:8080/api/Message/update",
 
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
@@ -98,6 +98,7 @@ function actualizar() {
             // la respuesta es pasada como argumento a la función
             success: function (respuesta) {
                 //escribe en la consola del desarrollador para efectos de depuración
+                
                 console.log(respuesta);
                 $("#mensajes").show(1000);
                 $("#mensajes").html("Registro actualizado...");
@@ -116,7 +117,7 @@ function actualizar() {
             }
         });
     }
-}
+
 
 /**
  * Configura el aspecto de la página para actualizar el registro

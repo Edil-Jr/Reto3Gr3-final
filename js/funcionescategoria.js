@@ -1,4 +1,5 @@
 function validaesVacio(dato){
+    console.log("dato"+dato)
     return !dato.trim().length;
 }
 

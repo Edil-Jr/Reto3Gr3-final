@@ -13,7 +13,7 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Client/all",
+        url: "http://localhost:8080/api/Client/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -64,9 +64,10 @@ function listarRespuesta(items) {
     $("#listado").show(500);
     //define variable javascript con la definicion inicial de la tabla, la primera fila y los
     //encabezados o títulos de la tabla
-    var tabla = `<table border="1" class='table'>
+    var tabla = `<table class='table'>
         <thead class="thead-dark">
                   <tr>
+                  <th>#</th>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Edad</th>
@@ -76,11 +77,12 @@ function listarRespuesta(items) {
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr>
+        <tr><td>${i}</td>
                    <td>${items[i].name}</td>
                    <td>${items[i].email}</td>
                    <td>${items[i].age}</td>
-                   <td><button class="btn btn-primary btn-sm" onclick="mostrarmensaje()">Editar</button></td>
-                   <td><button class="btn btn-secondary btn-sm" onclick="mostrarmensaje()">Borrar</button></td>
+                   <td id="id-boton"><button id="boton-primary"class="btn btn-primary btn-sm" onclick="editarRegistro(${items[i].id})">Editar</button></td>
+                   <td id="id-boton"><button class="btn btn-dark btn-sm" onclick="borrarRegistro(${items[i].idClient})">Borrar</button></td>
                    </tr>`;
     }
 

@@ -7,13 +7,13 @@ function editarRegistro(llaveRegistro) {
     let datos = {
         id: llaveRegistro
     }
-
+console.log("Se ejecuto editar...")
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Cabin" + llaveRegistro,
+        url: "http://localhost:8080/api/Cabin/all" ,
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -36,7 +36,7 @@ function editarRegistro(llaveRegistro) {
             $("#mensajes").show(1000);
             $("#mensajes").html("Información recuperada...");
             $("#mensajes").hide(1000);
-            editarRespuesta(respuesta.items);
+            editarRespuesta(respuesta);
             activaEditar();
         },
 
@@ -61,31 +61,40 @@ function editarRegistro(llaveRegistro) {
 function editarRespuesta(items) {
     $("#idEdit").val(items[0].id);
     $("#nameEdit").val(items[0].name);
+    $("#roomEdit").val(items[0].rooms);
     $("#brandEdit").val(items[0].brand);
-    $("#modelEdit").val(items[0].model);
-    $("#categoryEdit").val(items[0].category_id);    
+    $("#categoryEdit").val(items[0].id);  
+    $("#descriptionEdit").val(items[0].description);
+    console.log(items[0].description)    
 }
 
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
 //petición al ws de tipo PUT
 function actualizar() {
-
+console.log("Descripcion: "+$("#descriptionEdit").val())
     //crea un objeto javascript
     let datos = {
-        id: $("#idEdit").val(),
+        id: parseInt($("#idEdit").val(), 10),
+        
         brand: $("#brandEdit").val(),
-        model: $("#modelEdit").val(),
-        category_id: $("#categoryEdit").val(),
-        name: $("#nameEdit").val()
+        name: $("#nameEdit").val(),
+        description:$("#descriptionEdit").val(),
+        rooms: parseInt($("#roomEdit").val(), 10),
+        /* category_id: $("#categoryEdit").val(), */
+        
     }
+    console.log("Datos que se envian: " + datos.description)
+console.log(typeof datos.id)
+console.log(typeof datos.rooms)
+    console.log(typeof datos.description)
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
+    console.log("datos json "+datosPeticion)
 
-    if (validarEditar()) {
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "https://g2c7d8c8e491995-db202109201320.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/costume/costume",
+            url: "http://localhost:8080/api/Cabin/update",
 
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
@@ -104,7 +113,7 @@ function actualizar() {
             // la respuesta es pasada como argumento a la función
             success: function (respuesta) {
                 //escribe en la consola del desarrollador para efectos de depuración
-                console.log(respuesta);
+                console.log("Esta es la respuesta del PUT "+respuesta);
                 $("#mensajes").show(1000);
                 $("#mensajes").html("Registro actualizado...");
                 $("#mensajes").hide(1000);
@@ -122,7 +131,7 @@ function actualizar() {
             }
         });
     }
-}
+
 
 /**
  * Configura el aspecto de la página para actualizar el registro

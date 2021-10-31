@@ -3,7 +3,7 @@
     ejecuta la petición asincrona al servidor de Oracle enviando dentro de los datos 
     de la petición registro a eliminar. El tipo de petición es DELETE
 */
-function borrarRegistro(llaveRegistro) {
+function borrarMensaje(llaveRegistro) {
     //crea un objeto javascript
     let datos={
         id: llaveRegistro
@@ -14,7 +14,7 @@ function borrarRegistro(llaveRegistro) {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Message/delete",
+        url: "http://localhost:8080/api/Message/"+llaveRegistro,
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)

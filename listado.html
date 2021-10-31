@@ -15,13 +15,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/listar.js"></script>
     <script src="js/registrar.js"></script>
-    <script src="js/funciones.js"></script>
+    <!-- <script src="js/funciones.js"></script> -->
+    <script src="js/borrar.js"></script>
+    <script src="js/editar.js"></script>
+    
 </head>
 
 <body>
-    <a href="index.html"><img src="img/back.png" alt="Regresar"></a>
+    <a href="index.html"><img src="img/previous.png" alt="Regresar" id="back"></a>
     <div class="container" id="principal">
-        <h1>Nuestras Cabañas</h1>
+        <h2>Nuestras Cabañas</h2>
 
         <!-- en el elemento identificado con el id 'mensajes' se mostraran los mensajes
              o resultado de ejecutar la peticion
@@ -59,18 +62,22 @@
         </div>
 
 
-        <!-- Seccion para editar registros-->
-        <div id="editar">
-            <h3>Editar Cabaña</h3>
-            <input type="text" id="nameEdit" placeholder="name">
-            <input type="text" id="brandEdit" placeholder="brand">
-            <input type="number" id="roomEdit" placeholder="room">
-            <input type="number" id="categoryEdit" placeholder="category_id">
-            <button onclick="actualizar();">Guardar</button>
-            <button onclick="estadoInicial();">Cancelar</button>
-        </div>
         
     </div>
+    
+    
+        <!-- Seccion para editar registros-->
+        <div id="editar" class="formulario">
+            <h4>Editar Cabaña</h4>
+            <input type="number" id="idEdit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="name">
+            <input type="text" id="nameEdit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="name">
+            <input type="text" id="brandEdit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="brand">
+            <input type="number" id="roomEdit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="room">
+            <input type="number" id="categoryEdit" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="category_id">
+            <textarea type="text" id="descriptionEdit"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="room"></textarea>
+            <button class="btn btn-primary btn-sm" onclick="actualizar();">Guardar</button>
+            <button class="btn btn-dark btn-sm"  onclick="estadoInicial();">Cancelar</button>
+        </div>
 </body>
 
 </html>

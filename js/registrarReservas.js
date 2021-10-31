@@ -1,24 +1,28 @@
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
 //petición al ws de tipo POST
 function registrar() {
-
+    console.log("Se eejcuto regustratr")
+    let inicio = $("#startDate").val()
+    let final = $("#devolutionDate").val()
+    console.log(inicio)
+    console.log(final)
     //crea un objeto javascript
     let datos={
-        startDate :$("#startDate").val(),
-        devolutionDate :$("#devolutionDate").val(),
+        startDate :inicio,
+        devolutionDate :final,
         client:{"idClient":$("#client").val()},
         cabin:{"id":$("#cabin").val()}
     }
-    console.log("id del cliente "+datos.client);
-    console.log("id de la cabin"+datos.cabin);
-
+    console.log("datos")
+    console.log(datos)
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
+    console.log(datosPeticion)
 
-    if (validar()){
+    
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "http://localhost/api/Reservation/save",
+            url: "http://localhost:8080/api/Reservation/save",
             
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
@@ -37,6 +41,7 @@ function registrar() {
             // la respuesta es pasada como argumento a la función
             success: function (respuesta) {
                 //escribe en la consola del desarrollador para efectos de depuración
+                console.log("Respuesta: ")
                 console.log(respuesta);
                 $("#mensajes").show(1000);
                 $("#mensajes").html("Registro ingresado...");
@@ -55,7 +60,7 @@ function registrar() {
             }
         });
     }
-}
+
 
 /**
  * Configura el aspecto de la página para ingresar un nuevo registro
@@ -67,7 +72,7 @@ function activaNuevo(){
     $("#nuevoRegistro").hide(500)
     $("#listado").hide(500);
     listarClientes();
-    listarDisfraces();
+    listarCabañas();
 }
 
 function armaListaClientes(items) {
@@ -89,7 +94,7 @@ function armaListaClientes(items) {
 function listarClientes() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Client/all",
+        url: "http://localhost:8080/api/Client/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -129,12 +134,12 @@ function listarClientes() {
 }
 
 
-function armaListaDisfraces(items) {
+function armaListaCabañas(items) {
     $("#listado").html("");
     $("#listado").show(500);
     //define variable javascript con la definicion inicial de la tabla, la primera fila y los
     //encabezados o títulos de la tabla
-    var lista = ` <option value="">--Selecciona un Disfraz--</option>`;
+    var lista = ` <option value="">--Selecciona un Cabaña--</option>`;
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
@@ -145,10 +150,10 @@ function armaListaDisfraces(items) {
     $("#cabin").html(lista);
 }
 
-function listarDisfraces() {
+function listarCabañas() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Cabin/all",
+        url: "http://localhost:8080/api/Cabin/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -168,7 +173,7 @@ function listarDisfraces() {
             //console.log(respuesta);
 
             //recibe el arreglo 'items' de la respuesta a la petición
-            armaListaDisfraces(respuesta);
+            armaListaCabañas(respuesta);
         },
 
         // código a ejecutar si la petición falla;

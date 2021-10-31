@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="/css/auxiliares.css">
+    <link rel="stylesheet" href="css/auxiliares.css">
     <title>Listado de clientes</title>
     <!--
     <script src="js/jquery-3.6.0.min.js"></script>
@@ -21,9 +21,9 @@
 </head>
 
 <body>
-    <a href="index.html"><img src="img/back.png" alt="Regresar"></a>
+    <a href="index.html"><img src="img/previous.png" alt="Regresar" id="back"></a>
     <div class="container" id="principal">
-        <h1>Clientes Disponibles</h1>
+        <h2>Clientes Disponibles</h2>
 
         <!-- en el elemento identificado con el id 'mensajes' se mostraran los mensajes
              o resultado de ejecutar la peticion
@@ -40,7 +40,7 @@
 
         <!-- Seccion para nuevos registros-->
         <div id="nuevo">
-            <h3>Registrar Cliente</h3>
+            <h4>Registrar Cliente</h4>
             <div class="mb-3" id="formulario">
                 <div class="mb-3">
                     <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name" placeholder="Nombre" onkeydown="upperCaseF(this)">
@@ -56,17 +56,19 @@
         </div>
 
 
-        <!-- Seccion para editar registros-->
-        <div id="editar">
-            <h3>Editar Cliente</h3>
-            <input type="text" id="nameEdit" placeholder="name">
-            <input type="text" id="emailEdit" placeholder="email">
-            <input type="password" id="passwordEdit" placeholder="password">
-            <input type="number" id="ageEdit" placeholder="age">
-            <button onclick="actualizar();">Guardar</button>
-            <button onclick="estadoInicial();">Cancelar</button>
-        </div>
+       
         
+    </div>
+     <!-- Seccion para editar registros-->
+     <div class="formulario" id="editar" >
+        <h4>Editar Cliente</h4>
+        <input type="number" id="idEdit"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="id">
+        <input type="text" id="nameEdit"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="name">
+        <input type="text" id="emailEdit"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="email">
+        <input type="password" id="passwordEdit"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="password">
+        <input type="number" id="ageEdit"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="age">
+        <button class="btn btn-primary btn-sm" onclick="actualizar();">Guardar</button>
+        <button class="btn btn-dark btn-sm" onclick="estadoInicial();">Cancelar</button>
     </div>
 </body>
 

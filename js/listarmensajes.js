@@ -13,7 +13,7 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Message/all",
+        url: "http://localhost:8080/api/Message/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -30,6 +30,7 @@ function listar() {
         // la respuesta es pasada como argumento a la función
         success: function (respuesta) {
             //escribe en la consola del desarrollador para efectos de depuración
+            console.log("Respuesta")
             console.log(respuesta);
 
             //recibe el arreglo 'items' de la respuesta a la petición
@@ -68,6 +69,7 @@ function listarRespuesta(items) {
     var tabla = `<table border="1" class="table">
             <thead class="thead-dark">
                   <tr>
+                  <th>#</th>
                     <th>Cliente</th>
                     <th>Cabaña</th>
                     <th>Mensaje</th>
@@ -77,11 +79,12 @@ function listarRespuesta(items) {
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr>
+        <tr><td>${i}</td>
                    <td>${items[i].client.name}</td> 
                    <td>${items[i].cabin.name}</td> 
                    <td>${items[i].messageText}</td>
-                   <td><button class="btn btn-primary btn-sm" onclick="mostrarmensaje()">Editar</button></td>
-                   <td><button class="btn btn-secondary btn-sm" onclick="mostrarmensaje()">Borrar</button></td>
+                   <td id="id-boton"><button id="boton-primary" class="btn btn-primary btn-sm" onclick="editarRegistro(${items[i].idMessage})">Editar</button></td>
+                   <td id="id-boton"><button class="btn btn-secondary btn-sm" onclick="borrarMensaje(${items[i].idMessage})">Borrar</button></td>
                    </tr>`;
     }
 

@@ -13,7 +13,7 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Reservation/all",
+        url: "http://localhost:8080/api/Reservation/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -67,6 +67,7 @@ function listarRespuesta(items) {
     var tabla = `<table border="1" class="table">
     <thead class="thead-dark">
                   <tr>
+                  <th>#</th>
                     <th>Inicio</th>
                     <th>Devolución</th>
                     <th>Cliente</th>
@@ -77,12 +78,13 @@ function listarRespuesta(items) {
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr>
-                   <td>${items[i].startDate}</td>
-                   <td>${items[i].devolutionDate}</td>
+        <tr><td>${i}</td>
+                   <td>${(items[i].startDate).substr(0, 10)}</td>
+                   <td>${(items[i].devolutionDate).substr(0,10)}</td>
                    <td>${items[i].client.name}</td> 
                    <td>${items[i].cabin.name}</td> 
-                   <td><button class="btn btn-primary btn-sm" onclick="mostrarmensaje()">Editar</button></td>
-                   <td><button class="btn btn-secondary btn-sm" onclick="mostrarmensaje()">Borrar</button></td>
+                   <td id="id-boton"><button id="boton-primary" class="btn btn-primary btn-sm" onclick="editarRegistro(${items[i].idReservation})">Editar</button></td>
+                   <td id="id-boton"><button  class="btn btn-dark btn-sm" onclick="borrarMensaje(${items[i].idReservation})">Borrar</button></td>
                    </tr>`;
     }
 

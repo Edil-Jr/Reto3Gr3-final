@@ -3,30 +3,23 @@
     ejecuta la petición asincrona al servidor de Oracle enviando dentro de los datos 
     de la petición registro a eliminar. El tipo de petición es DELETE
 */
-function borrarRegistro(llaveRegistro) {
+function borrarMensaje(llaveRegistro) {
     //crea un objeto javascript
     let datos={
         id: llaveRegistro
     }
-    
-    for (let clave in datos){
-        console.log(datos[clave])
-    } 
-    console.log(datos)
-    
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
-    let dFatosPeticion = JSON.stringify(datos);
+    let datosPeticion = JSON.stringify(datos);
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-       
-        url: "http://localhost:8080/api/Category/"+llaveRegistro,
+        url: "http://localhost:8080/api/Reservation/"+llaveRegistro,
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
-        data : datos,
+        data : datosPeticion,
 
         // especifica el tipo de petición http: POST, GET, PUT, DELETE
         type: 'DELETE',

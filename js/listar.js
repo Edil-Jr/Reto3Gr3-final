@@ -11,7 +11,7 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost/api/Cabin/all",
+        url: "http://localhost:8080/api/Cabin/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -44,7 +44,7 @@ function listar() {
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de disfraces...");
+            $("#mensajes").html("Obteniendo listado de Cabañas...");
             $("#mensajes").hide(1000);
         }
     });
@@ -66,6 +66,7 @@ function listarRespuesta(items) {
     var tabla = `<table class="table" border="1">
                   <thead class="thead-dark">
                   <tr>
+                  <th>#</th>
                     <th>Categoria</th>
                     <th>Nombre</th>
                     <th>Marca</th>
@@ -77,14 +78,14 @@ function listarRespuesta(items) {
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
-        tabla +=`<tr>
+        tabla +=`<tr><th scope="row">${i}</th>
                   <td>${items[i].category.name}</td>
                    <td>${items[i].name}</td>
                    <td>${items[i].brand}</td>
                    <td>${items[i].rooms}</td>
                    <td>${items[i].description}</td>
-                   <td><button class="btn btn-primary btn-sm" onclick="mostrarmensaje()">Editar</button></td>
-                   <td><button type="button" class="btn btn-secondary btn-sm" onclick="mostrarmensaje()">Borrar</button></td>
+                   <td id="id-boton"><button id="boton-primary" class="btn btn-primary btn-sm" onclick="editarRegistro(${items[i].id})">Editar</button></td>
+                   <td id="id-boton"><button type="button" class="btn btn-secondary btn-sm" onclick="borrarRegistro(${items[i].id})">Borrar</button></td>
                    </tr>`;
     }
 

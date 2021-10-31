@@ -43,7 +43,7 @@ function validar() {
         $("#client").focus();
         return false;
     } else if (validaesVacio(cabin)) {
-        errores = "Debe seleccionar un disfraz<br>";
+        errores = "Debe seleccionar un Cabaña<br>";
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
         $("#cabin").focus();
