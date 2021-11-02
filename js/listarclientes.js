@@ -60,8 +60,9 @@ function listar() {
     
 */
 function listarRespuesta(items) {
-    $("#listado").html("");
-    $("#listado").show(500);
+    //$("#listado").html("");
+    //$("#listado").show(500);
+    console.log("estos son los ",items);
     //define variable javascript con la definicion inicial de la tabla, la primera fila y los
     //encabezados o títulos de la tabla
     var tabla = `<table class='table'>
@@ -77,11 +78,11 @@ function listarRespuesta(items) {
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr>
-        <tr><td>${i}</td>
+        <tr><td>${items[i].idClient}</td>
                    <td>${items[i].name}</td>
                    <td>${items[i].email}</td>
                    <td>${items[i].age}</td>
-                   <td id="id-boton"><button id="boton-primary"class="btn btn-primary btn-sm" onclick="editarRegistro(${items[i].id})">Editar</button></td>
+                   <td id="id-boton"><button id="boton-primary"class="btn btn-primary btn-sm" onclick="editarRegistro(${items[i].idClient})">Editar</button></td>
                    <td id="id-boton"><button class="btn btn-dark btn-sm" onclick="borrarRegistro(${items[i].idClient})">Borrar</button></td>
                    </tr>`;
     }

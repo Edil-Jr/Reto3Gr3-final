@@ -30,7 +30,7 @@ function listar() {
         // la respuesta es pasada como argumento a la función
         success: function (respuesta) {
             //escribe en la consola del desarrollador para efectos de depuración
-            console.log(respuesta);
+            //console.log(respuesta);
 
             //recibe el arreglo 'items' de la respuesta a la petición
             listarRespuesta(respuesta);
@@ -47,7 +47,7 @@ function listar() {
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
             $("#mensajes").html("Obteniendo listado de mensajes...");
-            $("#mensajes").hide(1000);
+            $("#mensajes").hide(5000);
         }
     });
 }
@@ -78,7 +78,7 @@ function listarRespuesta(items) {
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr>
-        <tr><td>${i}</td>
+        <tr><td>${i+1}</td>
                    <td>${(items[i].startDate).substr(0, 10)}</td>
                    <td>${(items[i].devolutionDate).substr(0,10)}</td>
                    <td>${items[i].client.name}</td> 
@@ -99,15 +99,197 @@ function listarRespuesta(items) {
 function estadoInicial(){
     $("#nuevo").hide();
     $("#editar").hide();
-    $("#listado").show(500);
+    $("#listado").hide(500);
     $("#nuevoRegistro").show(500)
-
+    $("#reportes").hide();
+    $("#reportes_btn").show(500);
     //limpia el contenido de los campos del formulario nuevo
     $("#id").val(""),
     $("#messagetext").val("")
     listar();
 }
 
-function mostrarmensaje(){
-    alert("Opción no implementada hasta el reto 4...")
+function activarReportes(){
+   // alert("Opción no implementada hasta el reto 4...")
+   $("#listado").hide(500);
+   $("#reportes").show(500);
+}
+
+function mostrarInformes(){
+        var startDate = $("#startDate_rep").val();
+        var devolutionDate = $("#devolutionDate_rep").val();
+
+        console.log(startDate);
+        console.log(devolutionDate);
+
+
+    $.ajax({
+        // la URL para la petición (url: "url al recurso o endpoint")
+        url: "http://localhost:8080/api/Reservation/report-dates/"+startDate+"/"+devolutionDate,
+        
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
+        //data : { id : 1, ...},
+
+        // especifica el tipo de petición http: POST, GET, PUT, DELETE
+        type: 'GET',
+
+        // el tipo de información que se espera de respuesta
+        dataType: 'json',
+
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function (respuesta) {
+            //escribe en la consola del desarrollador para efectos de depuración
+            //console.log(respuesta);
+
+            //recibe el arreglo 'items' de la respuesta a la petición
+            listarRespuesta(respuesta);
+        },
+
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function (xhr, status) {
+            $("#mensajes").html("Ocurrio un problema al ejecutar la petición..." + status);
+            //$("#mensajes").hide(1000);
+        },
+
+        // código a ejecutar sin importar si la petición falló o no
+        complete: function (xhr, status) {
+            $("#mensajes").html("Obteniendo listado de mensajes...");
+            $("#mensajes").hide(5000);
+        }
+    });
+
+    
+
+}
+
+function mostrarStatus(){
+    $.ajax({
+        // la URL para la petición (url: "url al recurso o endpoint")
+        url: "http://localhost:8080/api/Reservation/report-status",
+        
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
+        //data : { id : 1, ...},
+
+        // especifica el tipo de petición http: POST, GET, PUT, DELETE
+        type: 'GET',
+
+        // el tipo de información que se espera de respuesta
+        dataType: 'json',
+
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function (respuesta) {
+            //escribe en la consola del desarrollador para efectos de depuración
+            //console.log(respuesta);
+
+            //recibe el arreglo 'items' de la respuesta a la petición
+            listarRespuesta(respuesta);
+            pintarStatus(respuesta);
+            console.log(respuesta);
+        },
+
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function (xhr, status) {
+            $("#mensajes").html("Ocurrio un problema al ejecutar la petición..." + status);
+            //$("#mensajes").hide(1000);
+        },
+
+        // código a ejecutar sin importar si la petición falló o no
+        complete: function (xhr, status) {
+            $("#mensajes").html("Obteniendo listado de mensajes...");
+            $("#mensajes").hide(5000);
+        }
+    });
+
+}
+
+function pintarStatus(respuesta){
+    $("#mostrarReportes").show(500);
+    var status =`<li>`+"Completadas :"+respuesta["completed"]+`</li>`+ 
+                `<li>`+"Canceladas :"+respuesta["cancelled"]+`</li>`;
+    $("#mostrarReportes").html(status);     
+    $("#mostrarReportes").hide(5000);
+}
+
+function mostrarclientes(){
+
+    $.ajax({
+        // la URL para la petición (url: "url al recurso o endpoint")
+        url: "http://localhost:8080/api/Reservation/report-clients",
+        
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
+        //data : { id : 1, ...},
+
+        // especifica el tipo de petición http: POST, GET, PUT, DELETE
+        type: 'GET',
+
+        // el tipo de información que se espera de respuesta
+        dataType: 'json',
+
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function (respuesta) {
+            //escribe en la consola del desarrollador para efectos de depuración
+            //console.log(respuesta);
+
+            //recibe el arreglo 'items' de la respuesta a la petición
+            pintarReporteClientes(respuesta);
+            
+            console.log(respuesta);
+        },
+
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function (xhr, status) {
+            $("#mensajes").html("Ocurrio un problema al ejecutar la petición..." + status);
+            //$("#mensajes").hide(1000);
+        },
+
+        // código a ejecutar sin importar si la petición falló o no
+        complete: function (xhr, status) {
+            $("#mensajes").html("Obteniendo listado de mensajes...");
+            $("#mensajes").hide(5000);
+        }
+    });
+
+}
+
+function pintarReporteClientes(items){
+  //  $("#mostrarReportes").show();
+    var mejoresclientes = `<table border="1" class="table">
+    <thead class="thead-dark">
+                  <tr>
+                  <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Total Reservas</th>
+                  
+                  </tr>`;
+
+    for (var i=0; i < items.length; i++) {
+                    mejoresclientes+=`<tr>
+                    <tr><td>${i+1}</td>
+                           
+                               <td>${(items[i]["client"]["name"])}</td>
+                               <td>${(items[i]["client"]["email"])}</td> 
+                               <td>${(items[i].total)}</td> 
+                               
+                               </tr>`;
+                }
+
+      $("#mostrarReportes").html(mejoresclientes);    
+      $("#mostrarReportes").toggle("callback");
+         
 }

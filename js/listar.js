@@ -79,7 +79,7 @@ function listarRespuesta(items) {
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr><th scope="row">${i}</th>
-                  <td>${items[i].category.name}</td>
+                  <td>${items[i].category.e}</td>
                    <td>${items[i].name}</td>
                    <td>${items[i].brand}</td>
                    <td>${items[i].rooms}</td>

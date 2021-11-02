@@ -1,11 +1,11 @@
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
 //petición al ws de tipo POST
 function registrar() {
-    console.log("Se eejcuto regustratr")
+    console.log("Se ejcuto registrar")
     let inicio = $("#startDate").val()
     let final = $("#devolutionDate").val()
-    console.log(inicio)
-    console.log(final)
+   // console.log(inicio)
+    //console.log(final)
     //crea un objeto javascript
     let datos={
         startDate :inicio,
@@ -69,13 +69,15 @@ function activaNuevo(){
     $("#nuevo").show(500);
     $("#startDate").focus();
     $("#editar").hide();
-    $("#nuevoRegistro").hide(500)
+    $("#nuevoRegistro").hide(500);
     $("#listado").hide(500);
-    listarClientes();
+    $("#reportes_btn").hide(500);
+    $("#reportes").hide(500);
+     listarClientes_registrar();
     listarCabañas();
 }
 
-function armaListaClientes(items) {
+function armaListaClientes_registrar(items) {
     $("#listado").html("");
     $("#listado").show(500);
     //define variable javascript con la definicion inicial de la tabla, la primera fila y los
@@ -91,7 +93,7 @@ function armaListaClientes(items) {
     $("#client").html(lista);
 }
 
-function listarClientes() {
+function listarClientes_registrar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
         url: "http://localhost:8080/api/Client/all",
@@ -111,10 +113,12 @@ function listarClientes() {
         // la respuesta es pasada como argumento a la función
         success: function (respuesta) {
             //escribe en la consola del desarrollador para efectos de depuración
-            //console.log(respuesta);
+            console.log(respuesta);
 
             //recibe el arreglo 'items' de la respuesta a la petición
-            armaListaClientes(respuesta);
+            armaListaClientes_registrar(respuesta);
+      
+
         },
 
         // código a ejecutar si la petición falla;
@@ -127,7 +131,7 @@ function listarClientes() {
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de bicis...");
+            $("#mensajes").html("Obteniendo listado de clientes...");
             $("#mensajes").hide(1000);
         }
     });
@@ -186,7 +190,7 @@ function listarCabañas() {
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de bicis...");
+            $("#mensajes").html("Obteniendo listado de cabañas...");
             $("#mensajes").hide(1000);
         }
     });
