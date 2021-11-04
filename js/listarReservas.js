@@ -13,8 +13,8 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8080/api/Reservation/all",
-        
+      //  url: "http://localhost:8080/api/Reservation/all",
+        url: "http://168.138.68.19:8080/api/Reservation/all",
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -125,8 +125,9 @@ function mostrarInformes(){
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8080/api/Reservation/report-dates/"+startDate+"/"+devolutionDate,
-        
+        url: "http://168.138.68.19:8080/api/Reservation/report-dates/"+startDate+"/"+devolutionDate,
+       // url: "http://localhost:8080/api/Reservation/report-dates/"+startDate+"/"+devolutionDate,
+
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -170,8 +171,8 @@ function mostrarInformes(){
 function mostrarStatus(){
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8080/api/Reservation/report-status",
-        
+      //  url: "http://localhost:8080/api/Reservation/report-status",
+        url: "http://168.138.68.19:8080/api/Reservation/report-status",
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -224,8 +225,8 @@ function mostrarclientes(){
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8080/api/Reservation/report-clients",
-        
+       // url: "http://localhost:8080/api/Reservation/report-clients",
+        url: "http://168.138.68.19:8080/api/Reservation/report-clients",
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional

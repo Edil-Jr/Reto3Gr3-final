@@ -19,8 +19,8 @@ function registrar() {
     
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "http://localhost:8080/api/Cabin/save",
-            
+           // url: "http://localhost:8080/api/Cabin/save",
+            url: "http://168.138.68.19:8080/api/Cabin/save",
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
             //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -89,8 +89,8 @@ function armaListaCategorias(items) {
 function listarCategorias() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8080/api/Category/all",
-        
+      //  url: "http://localhost:8080/api/Category/all",
+        url: "http://168.138.68.19:8080/api/Category/all",
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional

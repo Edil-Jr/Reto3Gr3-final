@@ -17,8 +17,8 @@ function editarRegistro(llaveRegistro) {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8080/api/Category/all",
-
+        url: "http://168.138.68.19:8080/api/Category/all",
+        //url: "http://localhost:8080/api/Category/all",
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -95,7 +95,7 @@ console.log(llave)
 
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "http://localhost:8080/api/Category/update",
+            url: "http://168.138.68.19:8080/api/Category/update",
 
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
