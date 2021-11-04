@@ -25,9 +25,9 @@
 
 <body>
     <a href="index.html"><img src="img/previous.png" alt="Regresar" id="back"></a>
-    <div class="container" id="principal">
+    <div class="container col-sm-12 col-md col-sm-12" id="principal">
         
-        <h2>Categorías Disponi</h2>
+        <h2>Clasificacion de cabañas</h2>
 
         <!-- en el elemento identificado con el id 'mensajes' se mostraran los mensajes
              o resultado de ejecutar la peticion
@@ -45,15 +45,15 @@
             <h4>Registrar Categoría</h4>
             <div class="mb-3 formulario" >
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Name address</label>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name" placeholder="name">
+                <label for="exampleFormControlInput1" class="form-label">Nombre Categoria</label>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name" required placeholder="Identifique la categoria">
             </div>
             
             
          <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Description address</label>
+                <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
            
-             <textarea id="description"  class="form-control" aria-label="With textarea" placeholder="description" rows="4"  onkeydown=""></textarea>
+             <textarea id="description"  class="form-control" aria-label="With textarea" placeholder="description" rows="4"  required onkeydown=""></textarea>
             </div>
              <div class="mb-3">
             <button class="btn btn-primary btn-sm" onclick="registrar();">Guardar</button>

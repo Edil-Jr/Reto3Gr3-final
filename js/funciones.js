@@ -117,3 +117,12 @@ function upperCaseF(campo) {
         campo.value = campo.value.toUpperCase();
     }, 1);
 }
+
+var logout = function() {
+    $.post("/logout", function() {
+        $("#user").html('');
+        $(".unauthenticated").show();
+        $(".authenticated").hide();
+    })
+    return true;
+}
