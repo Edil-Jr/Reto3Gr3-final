@@ -17,22 +17,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <div class="container formulario">  
 	<h1>Autenticacion Cabin</h1>
-        <div class="container">
-            <div class="container unauthenticated">
-            With GitHub: <a href="/oauth2/authorization/github">click here</a>
+        <div class="mb-3 ">
+            <div class="mb-3 container unauthenticated">
+            Ingresar con GitHub: <a href="/oauth2/authorization/github">click AQUI</a>
         </div>
-        <div class="container authenticated" style="display:none">
-            Logged in as: <span id="user"></span>
+        <div class="mb-3 container authenticated" style="display:none">
+            Ingreso como: <span id="user"></span>
         </div>
         </div>
-        <div class="container authenticated">
-        Logged in as: <span id="user"></span>
+        <div class="mb-3 container authenticated">
+        Ingreso como: <span id="user"></span>
         <div>
-          <button onClick="logout()" class="btn btn-primary">Logout</button>
+          <button onClick="logout()" class="btn btn-primary btn-sm">Logout</button>
         </div>
         </div>
-        
+    </div>    
         
         
 </body>
@@ -42,6 +43,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         $(".unauthenticated").hide()
         $(".authenticated").show()
     });
+    
+    var logout = function() {
+    $.post("/logout", function() {
+        $("#user").html('');
+        $(".unauthenticated").show();
+        $(".authenticated").hide();
+    })
+    return true;
+}
+    
 </script>
 
 

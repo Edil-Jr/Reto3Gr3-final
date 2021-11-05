@@ -60,6 +60,6 @@ class UserController extends WebSecurityConfigurerAdapter{
         // @formatter:on
     }
         
-        
+    
         // @formatter:on
     }
