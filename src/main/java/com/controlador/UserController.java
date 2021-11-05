@@ -31,9 +31,6 @@ class UserController extends WebSecurityConfigurerAdapter{
         return Collections.singletonMap("name", principal.getAttribute("name"));
     }
 
-    public static void main(String[] args) {
-        SpringApplication.run(UserController.class, args);
-    }
 
      @Override
     protected void configure(HttpSecurity http) throws Exception {
