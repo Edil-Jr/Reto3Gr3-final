@@ -61,6 +61,12 @@ import org.springframework.stereotype.Service;
                        resp.get().setName(cabin.getName());
                     }
                     
+                    if (cabin.getDescription() != null) {
+                       resp.get().setDescription(cabin.getDescription());
+                }
+                     if(cabin.getCategory()!=null){
+                         resp.get().setCategory(cabin.getCategory());
+                    }
                                  
                   
                     metodosCrud.save(resp.get());
@@ -72,7 +78,15 @@ import org.springframework.stereotype.Service;
             return cabin;
         }
     }
-            
+     
+       public boolean deleteCabin(int cabinId) {
+        Boolean aBoolean = getCabin(cabinId).map(cabin -> {
+            metodosCrud.delete(cabin);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }     
+    
            
 
 }

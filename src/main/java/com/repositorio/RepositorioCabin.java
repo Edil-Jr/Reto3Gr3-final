@@ -34,6 +34,7 @@ public class RepositorioCabin {
 	    public Cabin save(Cabin cabin){
 	        return crud.save(cabin);
 	    }
+            
 	    public void delete(Cabin cabin){
 	        crud.delete(cabin);
 	    }

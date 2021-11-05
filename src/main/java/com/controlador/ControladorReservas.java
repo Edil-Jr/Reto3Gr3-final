@@ -5,6 +5,8 @@
 package com.controlador;
 
 import com.modelo.Reservacion;
+import com.repositorio.ContadorClientes;
+import com.repositorio.StatusReservas;
 import com.servicios.ServiciosReservacion;
 import java.util.List;
 import java.util.Optional;
@@ -59,5 +61,20 @@ public class ControladorReservas {
     public boolean delete(@PathVariable("id") int reservationId) {
         return servicio.deleteReservation(reservationId);
     }
+    
+    @GetMapping("/report-status")
+    public StatusReservas getReservas(){
+        return servicio.reporteStatusServicio();
+    }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+     public List<Reservacion> getReservasTiempo (@PathVariable("dateOne")String dateOne, @PathVariable("dateTwo")String dateTwo ){
+         return servicio.reporteTiempoServicio(dateOne, dateTwo);
+     }
+     
+     @GetMapping("/report-clients")
+     public List<ContadorClientes> getClientes(){
+         return servicio.reporteClientesServicio();
+     }
     
 }
