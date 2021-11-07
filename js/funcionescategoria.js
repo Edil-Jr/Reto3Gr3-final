@@ -45,9 +45,7 @@ function validar(){
  function validarEditar(){
     //obtiene valores
     let name = $("#nameEdit").val();
-    let brand = $("#brandEdit").val();
-    let model = $("#modelEdit").val();
-    let category = $("#categoryEdit").val();
+    let category = $("#descripcionEdit").val();
     let errores="";
     $("#mensajes").html("");
 
@@ -57,18 +55,6 @@ function validar(){
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
         $("#nameEdit").focus();
-        return false;
-    }else if( validaesVacio(brand)) {
-        errores="brand vacio<br>";
-        $("#mensajes").html(errores);
-        $("#mensajes").show(500);
-        $("#brandEdit").focus();
-        return false;
-    }else if( validaesVacio(model)) {  
-        errores="model vacio<br>";
-        $("#mensajes").html(errores);
-        $("#mensajes").show(500);
-        $("#modelEdit").focus();
         return false;
     }else if( validaesVacio(category)) { 
         errores="category vacio<br>";

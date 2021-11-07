@@ -64,8 +64,8 @@ function validar() {
  */
 function validarEditar() {
     //obtiene valores
-    let id = $("#idEdit").val();
-    let messagetext = $("#messagetextEdit").val();
+    let id = $("#client_edi").val();
+    let messagetext = $("#cabin_edi").val();
     let errores = "";
     $("#mensajes").html("");
 

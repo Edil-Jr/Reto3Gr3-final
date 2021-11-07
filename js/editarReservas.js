@@ -15,13 +15,7 @@ function editarRegistro(llaveRegistro) {
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
 
-    
-    if (!validarEditar()){
-        $("#mensajes").html("Sin Datos...");
-        $("#mensajes").hide(5000);
-        alert("Sin Datos");
-    }
-    else{
+ 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
         url: "http://168.138.68.19:8080/api/Reservation/" + llaveRegistro,
@@ -49,8 +43,9 @@ function editarRegistro(llaveRegistro) {
             $("#mensajes").hide(1000);
        
             //editarRespuesta(respuesta, llaveRegistro);
-            activaEditar();
+            
            // armaListaCabañas(respuesta);
+           activaEditar();
             armaListaClientes(respuesta);
             //editarRespuesta(respuesta,llaveRegistro);
             
@@ -65,7 +60,7 @@ function editarRegistro(llaveRegistro) {
            
         }
     });
-}
+
 }
 
 function activaEditar(){
@@ -80,7 +75,7 @@ function activaEditar(){
 }
 
 function armaListaClientes(items) {
-    $("#idReservation2").val(idReservation);
+    $("#idReservation2").val(items.idReservation);
     var startdate = items["startDate"].substr(0,10);
     $("#startDate_edi").val(startdate);
 
