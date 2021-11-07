@@ -68,7 +68,7 @@ function listarRespuesta(items) {
     var tabla = `<table class='table'>
         <thead class="thead-dark">
                   <tr>
-                  <th>#</th>
+                  <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Edad</th>
@@ -78,7 +78,7 @@ function listarRespuesta(items) {
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr>
-        <tr><td>${items[i].idClient}</td>
+        <tr><td>${i+1}</td>
                    <td>${items[i].name}</td>
                    <td>${items[i].email}</td>
                    <td>${items[i].age}</td>

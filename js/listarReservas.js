@@ -67,7 +67,7 @@ function listarRespuesta(items) {
     var tabla = `<table border="1" class="table">
     <thead class="thead-dark">
                   <tr>
-                  <th>#</th>
+                  <th>ID</th>
                     <th>Inicio</th>
                     <th>Devolución</th>
                     <th>Cliente</th>
