@@ -84,6 +84,13 @@ function actualizar() {
     let datosPeticion = JSON.stringify(datos);
     console.log("Datos json : "+ datosPeticion)
 
+    
+    if (!validarEditar()){
+        $("#mensajes").html("Sin Datos...");
+        $("#mensajes").hide(5000);
+        alert("Sin Datos");
+    }
+    else{
 
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
@@ -123,6 +130,7 @@ function actualizar() {
                 //$("#mensajes").hide(1000);
             }
         });
+    }
     }
 
 

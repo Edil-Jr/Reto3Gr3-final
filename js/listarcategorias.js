@@ -77,7 +77,7 @@ function listarRespuesta(items) {
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i = 0; i < items.length; i++) {
         tabla += `<tr>
-        <th scope="row">${i}</th>
+        <th scope="row">${items[i].id}</th>
                   <td>${items[i].name}</td>
                   <td>${items[i].description}</td>
                    <td id="id-boton"><button id="boton-primary" class="btn btn-primary btn-sm" onclick="editarRegistro(${items[i].id})">Editar</onclick=></td>

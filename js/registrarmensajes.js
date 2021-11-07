@@ -1,3 +1,4 @@
+
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
 //petición al ws de tipo POST
 function registrar() {
@@ -9,6 +10,14 @@ function registrar() {
         cabin:{"id":$("#cabin").val()}
     }
     
+    
+    
+    if (!validar()){
+        $("#mensajes").html("Sin Datos...");
+        $("#mensajes").hide(5000);
+        alert("Sin Datos");
+    }
+    else{
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
@@ -52,6 +61,7 @@ function registrar() {
                 //$("#mensajes").hide(1000);
             }
         });
+    }
     }
 
 

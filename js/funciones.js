@@ -1,6 +1,6 @@
-/* function validaesVacio(dato){
+ function validaesVacio(dato){
     return !dato.trim().length;
-} */
+} 
 
 /**
  * Al ingresar un nuevo registro:

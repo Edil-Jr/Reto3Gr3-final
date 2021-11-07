@@ -15,6 +15,13 @@ function editarRegistro(llaveRegistro) {
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
 
+    
+    if (!validarEditar()){
+        $("#mensajes").html("Sin Datos...");
+        $("#mensajes").hide(5000);
+        alert("Sin Datos");
+    }
+    else{
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
         url: "http://168.138.68.19:8080/api/Reservation/" + llaveRegistro,
@@ -58,6 +65,7 @@ function editarRegistro(llaveRegistro) {
            
         }
     });
+}
 }
 
 function activaEditar(){
@@ -143,6 +151,13 @@ function actualizar() {
     console.log("Datos json : "+ datosPeticion)
 
 
+    
+    if (!validarEditar()){
+        $("#mensajes").html("Sin Datos...");
+        $("#mensajes").hide(5000);
+        alert("Sin Datos");
+    }
+    else{
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
            // url: "http://localhost:8080/api/Reservation/update",
@@ -181,6 +196,7 @@ function actualizar() {
                 //$("#mensajes").hide(1000);
             }
         });
+    }
     }
 
 

@@ -88,8 +88,16 @@ console.log(llave)
         description: $("#descripcionEdit").val(),
     }
     console.log("Se ejecuto actualizar")
-    console.log(datos.id)
-    console.log(datos)
+   
+
+    
+    if (!validarEditar()){
+        $("#mensajes").html("Sin Datos...");
+        $("#mensajes").hide(5000);
+        alert("Sin Datos");
+    }
+    else{
+
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
 
@@ -132,7 +140,7 @@ console.log(llave)
                 //$("#mensajes").hide(1000);
             }
         });
-    
+    }
 }
 
 /**

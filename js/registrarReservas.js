@@ -17,8 +17,15 @@ function registrar() {
     console.log(datos)
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
     let datosPeticion = JSON.stringify(datos);
-    console.log(datosPeticion)
+   // console.log(datosPeticion)
 
+    
+   if (!validar()){
+    $("#mensajes").html("Sin Datos...");
+    $("#mensajes").hide(5000);
+    alert("Sin Datos");
+}
+else{
     
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
@@ -59,6 +66,7 @@ function registrar() {
                 //$("#mensajes").hide(1000);
             }
         });
+    }
     }
 
 

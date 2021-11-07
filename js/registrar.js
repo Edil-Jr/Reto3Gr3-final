@@ -11,6 +11,14 @@ function registrar() {
         category:{"id":$("#category").val()}
     }
 
+    
+    if (!validar()){
+        $("#mensajes").html("Sin Datos...");
+        $("#mensajes").hide(5000);
+        alert("Sin Datos");
+    }
+    else{
+
     /* console.log("Este es mi objeto de cabin " +datos) */
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
@@ -42,6 +50,7 @@ function registrar() {
                 $("#mensajes").show(1000);
                 $("#mensajes").html("Registro ingresado...");
                 $("#mensajes").hide(1000);
+                
                 listar();
                 estadoInicial();
             },
@@ -55,6 +64,8 @@ function registrar() {
                 //$("#mensajes").hide(1000);
             }
         });
+    }
+    
     }
 
 

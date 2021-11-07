@@ -12,6 +12,13 @@ function registrar() {
     let datosPeticion = JSON.stringify(datos);
 
   
+    
+    if (!validar()){
+        $("#mensajes").html("Sin Datos...");
+        $("#mensajes").hide(5000);
+        alert("Sin Datos");
+    }
+    else{
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
           //  url: "http://localhost:8080/api/Category/save",
@@ -33,7 +40,7 @@ function registrar() {
             // la respuesta es pasada como argumento a la función
             success: function (respuesta) {
                 //escribe en la consola del desarrollador para efectos de depuración
-                console.log(respuesta);
+           
                 $("#mensajes").show(1000);
                 $("#mensajes").html("Registro ingresado...");
                 $("#mensajes").hide(1000);
@@ -50,6 +57,7 @@ function registrar() {
                 //$("#mensajes").hide(1000);
             }
         });
+    }
     }
 
 

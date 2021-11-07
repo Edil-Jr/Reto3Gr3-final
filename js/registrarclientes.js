@@ -12,6 +12,16 @@ function registrar() {
     }
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
+
+    
+    if (!validar()){
+        $("#mensajes").html("Sin Datos...");
+        $("#mensajes").hide(5000);
+        alert("Sin Datos");
+    }
+    else{
+
+    
     let datosPeticion = JSON.stringify(datos);
 
    
@@ -53,6 +63,7 @@ function registrar() {
                 //$("#mensajes").hide(1000);
             }
         });
+    }
     }
 
 

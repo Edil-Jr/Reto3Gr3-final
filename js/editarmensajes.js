@@ -80,6 +80,13 @@ function actualizar() {
     let datosPeticion = JSON.stringify(datos);
     console.log("Este es el jsno: " +datosPeticion)
 
+    
+    if (!validarEditar()){
+        $("#mensajes").html("Sin Datos...");
+        $("#mensajes").hide(5000);
+        alert("Sin Datos");
+    }
+    else{
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
             url: "http://168.138.68.19:8080/api/Message/update",
@@ -119,6 +126,7 @@ function actualizar() {
                 //$("#mensajes").hide(1000);
             }
         });
+    }
     }
 
 
